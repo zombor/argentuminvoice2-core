@@ -15,7 +15,7 @@ class Create
     $this->_validator->set_data($client_data);
 
     if ( ! $this->_validator->valid())
-      throw new Create\Invalid;
+      throw new Create\Invalid($this->_validator->errors());
 
     $client = $this->_client_repository->create($client_data);
     return $client;
